@@ -35,12 +35,12 @@
          </div>
          <div class="row-2" v-if="data.languages || data.tools">
             <div v-for="(items, ix) in data.languages" :key="ix">
-                <div class="item" @click="filteredResult(items)">{{items}}</div>
+                <div class="item" style="cursor:pointer; color: hsl(180, 29%, 50%);" @click="filteredResult(items)">{{items}}</div>
             </div>
             <div v-for="(item, ix) in data.tools" :key="ix">
-                <div class="item" @click="filteredResult(item)">{{item}}</div>
+                <div class="item" style="cursor:pointer; color: hsl(180, 29%, 50%);" @click="filteredResult(item)">{{item}}</div>
             </div>
-            <div v-if="data.level" @click="filteredResult(data.level)">{{data.level}}</div>
+            <div v-if="data.level" style="cursor:pointer; color: hsl(180, 29%, 50%);" @click="filteredResult(data.level)">{{data.level}}</div>
          </div>
         </div>
  </div>
