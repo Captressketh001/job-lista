@@ -1,0 +1,192 @@
+body{
+    margin: 0 auto;
+}
+.header{
+    display: flex;
+    width: 100%;
+    height: 150px;
+    background: url(../images/bg-header-desktop.svg) no-repeat hsl(180, 29%, 50%);
+}
+@media screen and (max-width:375px){
+    .header{
+        background: url(../images/bg-header-mobile.svg) no-repeat hsl(180, 29%, 50%);
+    }
+}
+.job-content-frame{
+    display: flex;
+    width: 100%;
+    background-color: hsl(180, 52%, 96%);
+    justify-content: center;
+}
+.job-content{
+    display: flex;
+    width: 80%;
+    height: 150px;
+    background-color: #fff;
+    margin-top: 50px;
+    box-shadow: 2px 2px 26px hsl(180, 52%, 96%);
+    justify-content: space-around;
+    align-items: center;
+    border-left: 10px solid hsl(180, 29%, 50%);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.search-bar{
+  background-color: hsl(180, 52%, 96%);
+}
+.search-results{
+  display: flex;
+  width: 80%;
+  height: 50px;
+  background-color: #fff;
+  margin: 0 auto;
+  position: relative;
+  top: -23px;
+  box-shadow: 0px 0px 26px hsl(180, 52%, 96%);
+  border-radius: 5px;
+  align-items: center;
+  list-style: none;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.filtered{
+  padding-right: 15px;
+}
+.filtered button{
+  background:hsl(180, 52%, 96%); 
+  padding:7px; 
+  border: none;
+  color: hsl(180, 29%, 50%);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.filtered::after{
+  content: url(../images/icon-remove.svg);
+  background-color: aqua;
+  padding: 5px 5px 5px 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.clear-filter{
+  margin-left:auto; 
+  padding-right: 47px
+}
+.clear-filter a{
+  color:hsl(180, 29%, 50%);
+}
+.job-description{
+  display: flex; 
+  flex-direction:column; 
+  justify-content:center; 
+  margin-left: 20px;
+}
+
+
+.row-1, .row-2{
+  display:flex; 
+  /* flex-wrap:wrap; */
+}
+@media screen and (max-width:690px) {
+  .row-1{
+    flex-direction: column;
+    margin-left: 30px;
+  }
+  .row-1::after{
+    border-bottom: 5px solid black;
+  }
+  .row-2{
+    margin-left: 30px;
+    flex-wrap: wrap;
+  }
+ 
+}
+@media screen and (max-width:690px){
+  .job-content{
+    flex-direction: column;
+    width: 90%;
+    height: 250px;
+    align-items: flex-start;
+  }
+  .job-description{
+    margin-left: 0px;
+  }
+  .fir-clickcircle{
+    margin-top: -90px;
+  }
+  .search-results{
+    height: 80px;
+  }
+}
+.fir-clickcircle {
+    height: 80px;
+    width: 80px;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+  
+  .fir-image-figure {
+    /* margin: 0; */
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 40px; */
+    /* position: relative; */
+    /* text-decoration: none; */
+  }
+ 
+  
+  .fir-image-figure .caption, .fir-image-figure figcaption {
+    padding-left: 15px;
+  }
+  
+  html.wf-active .fir-image-figure .fig-author-figure-title {
+    font-family: var(--fir-font-header);
+    font-size: 16px;
+  }
+  
+  .fir-image-figure .fig-author-figure-title {
+    color: var(--fir-color-grey);
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .fir-imageover {
+    position: relative;
+    display: flex;
+  }
+  
+  .fir-imageover-color {
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    background: var(--fir-blue-twitter-alpha);
+    background-image: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background .3s ease-in-out;
+    animation: fadeInFadeOut 2s infinite;
+    top: 0;
+    left: 0;
+  }
+  
+  .fir-imageover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: fadeInFadeOut 2s infinite;
+  }
+  
+  @keyframes fadeInFadeOut {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  .items, .item{
+    padding-right: 15px;
+  }
+  
