@@ -3,7 +3,7 @@
  <div class="header">
 
  </div>
- <div class="search-bar" v-if="show==true">
+ <div class="search-bar" v-show="filtered.length > 0">
      <ul class="search-results">
          <li class="filtered"  v-for="(data, ix) in filtered" :key="ix" @click="cancel(data)"> <button type="submit">{{data}}
              <!-- <span style="background:blue; padding: 5px"><img src="./assets/images/icon-remove.svg" alt="" srcset=""></span> -->
@@ -11,11 +11,11 @@
          <li class="clear-filter" @click="clear">Clear</li>
      </ul>
  </div>
- <div class="job-content-frame" id="filtered" v-for="data in myJson" :key="data.id">
+ <div class="job-content-frame" id="filtered" v-for="data in filteredJobs" :key="data.id">
      <div class="job-content">
          <div style="" class="row-1">
              <div>
-                  <img class="fir-author-image fir-clickcircle" src='./assets/images/photosnap.svg' alt="logo" >
+                  <img class="fir-author-image fir-clickcircle" :src='data.logo' alt="logo" >
              </div>
              <div class="job-description">
                  <div style="display: flex;padding-bottom: 10px; flex-wrap:wrap">
@@ -27,13 +27,15 @@
                      <div class="fig-author-figure-title">{{data.position}}</div>
                  </div>
                  <div style="display: flex;">
-                     <div class="items" v-if="data.posted_at">{{data.posted_at}}</div>
-                    <div class="items" v-if="data.contract">{{data.contract}}</div>
-                    <div class="items" v-if="data.location">{{data.location}}</div>
+                     <span class="items" v-if="data.postedAt">{{data.postedAt}}</span>
+                     <span>&bull;</span>
+                    <span class="items" v-if="data.contract">{{data.contract}}</span>
+                    <span>&bull;</span>
+                    <span class="items" v-if="data.location">{{data.location}}</span>
                  </div>
              </div>
          </div>
-         <div class="row-2" v-if="data.languages || data.tools">
+         <div class="row-2">
             <div v-for="(items, ix) in data.languages" :key="ix">
                 <div class="item" style="cursor:pointer; color: hsl(180, 29%, 50%);" @click="filteredResult(items)">{{items}}</div>
             </div>
@@ -41,6 +43,7 @@
                 <div class="item" style="cursor:pointer; color: hsl(180, 29%, 50%);" @click="filteredResult(item)">{{item}}</div>
             </div>
             <div v-if="data.level" style="cursor:pointer; color: hsl(180, 29%, 50%);" @click="filteredResult(data.level)">{{data.level}}</div>
+            <!-- <div v-for="category in filtering" :key="category" class="item" @click="filteredResult(category)">{{category}}</div> -->
          </div>
         </div>
  </div>
@@ -57,6 +60,48 @@ export default {
           show: false
       }
 
+  },
+  computed:{
+      filtering(){
+        // let categories = ''
+         let cat = ''
+          let data = this.myJson
+          for(let p=0; p < data.length; p++){
+             cat = [data[p].role, data[p].level, data[p].languages, data[p].tools].flat()
+          }
+        //   data.forEach(i => {
+        //     categories = [i.role, i.level, i.languages, i.tools].flat()
+        // })
+        console.log('cat')
+        console.log(cat)
+        //   return categories
+        return cat
+      },
+      filteredJobs(){
+          let x = this.myJson
+          if(this.filtered.length === 0){
+              return x
+          }
+          return x.filter(job => {
+              let match = true
+              const jobCategories = [job.languages, job.role, job.level, job.tools].flat()
+              this.filtered.forEach(categorie => {
+                  match = match && (jobCategories.indexOf(categorie) >= 0)
+              })
+              return match
+          })
+      }
+        //  return jobs.value.filter(job => {
+        // let match = true
+        // const jobCategories = [job.languages, job.role, job.level, job.tools].flat()
+        // categoriesToFilter.value.forEach(categorie => {
+        //   match = match && (jobCategories.indexOf(categorie) >= 0)
+        // })
+        // return match
+    //   data.forEach((i, index) => {
+          
+    //   })
+    //   const categories = computed(() => [props.job.role, props.job.level, props.job.languages, props.job.tools].flat())
   },
   methods: {
       filteredResult(data){

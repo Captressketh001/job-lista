@@ -5,11 +5,11 @@ body{
     display: flex;
     width: 100%;
     height: 150px;
-    background: url(../images/bg-header-desktop.svg) no-repeat hsl(180, 29%, 50%);
+    background: url(/images/bg-header-desktop.svg) no-repeat hsl(180, 29%, 50%);
 }
 @media screen and (max-width:375px){
     .header{
-        background: url(../images/bg-header-mobile.svg) no-repeat hsl(180, 29%, 50%);
+        background: url(/images/bg-header-mobile.svg) no-repeat hsl(180, 29%, 50%);
     }
 }
 .job-content-frame{
@@ -25,9 +25,12 @@ body{
     background-color: #fff;
     margin-top: 50px;
     box-shadow: 2px 2px 26px hsl(180, 52%, 96%);
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    border-left: 10px solid hsl(180, 29%, 50%);
+    padding: 0 2em;
+}
+.job-content:nth-child(-n+1){
+  border-left: 10px solid hsl(180, 29%, 50%);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
@@ -61,7 +64,7 @@ body{
   border-bottom-left-radius: 5px;
 }
 .filtered::after{
-  content: url(../images/icon-remove.svg);
+  content: url(/images/icon-remove.svg);
   background-color: aqua;
   padding: 5px 5px 5px 5px;
   border-top-right-radius: 5px;
@@ -108,6 +111,8 @@ body{
     width: 90%;
     height: 250px;
     align-items: flex-start;
+    justify-content: space-around;
+    padding: 0;
   }
   .job-description{
     margin-left: 0px;
