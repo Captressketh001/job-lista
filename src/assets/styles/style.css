@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=League+Spartan:wght@500&display=swap');
 body{
     margin: 0 auto;
+    font-family: 'League Spartan', sans-serif;
 }
-.header{
+header{
     display: flex;
     width: 100%;
     height: 150px;
@@ -29,8 +31,8 @@ body{
     align-items: center;
     padding: 0 2em;
 }
-.job-content:nth-child(-n+1){
-  border-left: 10px solid hsl(180, 29%, 50%);
+.job-content:nth-child(-n+2){
+  border-left: 5px solid hsl(180, 29%, 50%);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
@@ -65,19 +67,25 @@ body{
 }
 .filtered::after{
   content: url(/images/icon-remove.svg);
-  background-color: aqua;
+  background-color: rgb(91, 164, 164);;
   padding: 5px 5px 5px 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   text-align: center;
   cursor: pointer;
 }
+.filtered:hover::after{
+  background-color: hsl(180, 14%, 20%);
+}
 .clear-filter{
   margin-left:auto; 
-  padding-right: 47px
-}
-.clear-filter a{
+  padding-right: 47px;
   color:hsl(180, 29%, 50%);
+  /* color: hsl(180, 29%, 50%); */
+}
+.clear-filter:hover{
+  cursor: pointer;
+  text-decoration: underline;
 }
 .job-description{
   display: flex; 
@@ -194,4 +202,46 @@ body{
   .items, .item{
     padding-right: 15px;
   }
-  
+  .items.featured{
+    padding: 6px;
+    background: hsl(180, 14%, 20%);
+    color: #fff;
+    border-radius: 13px;
+    margin-left: 10px;
+  }
+  .items.new{
+    padding: 6px;
+    background: hsl(180, 29%, 50%);
+    color: #fff;
+    border-radius: 13px;
+  }
+  .items.company{
+    padding: 6px 10px 6px 0px;
+  }
+  .contract{
+    color: hsl(180, 14%, 20%);
+    cursor: pointer;
+    font-weight: 800;
+  }
+  .contract:hover{
+    color:  hsl(180, 29%, 50%);
+    font-weight: 900;
+  }
+  .language{
+    cursor: pointer;
+    color: rgb(91, 164, 164);
+    background: hsl(180, 52%, 96%);
+    margin-right: 5px;
+    padding: 7px;
+    border-radius: 5px;
+  }
+  .language:hover{
+    background-color: hsl(180, 29%, 50%);
+    color: #fff;
+  }
+  .bull-icon{
+    margin-right: 10px;
+  }
+  .span-info span{
+    color: hsl(180, 8%, 52%)
+  }

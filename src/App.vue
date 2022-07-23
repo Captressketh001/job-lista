@@ -1,8 +1,8 @@
 <template>
 <div>
- <div class="header">
+ <header>
 
- </div>
+ </header>
  <div class="search-bar" v-show="filtered.length > 0">
      <ul class="search-results">
          <li class="filtered"  v-for="(data, ix) in filtered" :key="ix" @click="cancel(data)"> <button type="submit">{{data}}
@@ -11,42 +11,42 @@
          <li class="clear-filter" @click="clear">Clear</li>
      </ul>
  </div>
- <div class="job-content-frame" id="filtered" v-for="data in filteredJobs" :key="data.id">
-     <div class="job-content">
+ <main class="job-content-frame" id="filtered" style="flex-direction:column; padding-top:50px">
+     <div class="job-content" v-for="data in filteredJobs" :key="data.id" style="margin: 0 auto 50px;">
          <div style="" class="row-1">
              <div>
                   <img class="fir-author-image fir-clickcircle" :src='data.logo' alt="logo" >
              </div>
              <div class="job-description">
-                 <div style="display: flex;padding-bottom: 10px; flex-wrap:wrap">
-                     <div class="items">{{data.company}}</div>
-                    <div class="items" v-if="data.new">NEW!</div>
-                    <div class="items" v-if="data.featured">FEATURED</div>
+                 <div style="display: flex;padding-bottom: 10px; flex-wrap:wrap;">
+                     <div class="items company">{{data.company}}</div>
+                    <div class="items new" v-if="data.new">NEW!</div>
+                    <div class="items featured" v-if="data.featured">FEATURED</div>
                  </div>
                  <div style="display: flex; padding-bottom: 10px;">
-                     <div class="fig-author-figure-title">{{data.position}}</div>
+                     <div class="fig-author-figure-title contract">{{data.position}}</div>
                  </div>
-                 <div style="display: flex;">
+                 <div style="display: flex;" class="span-info">
                      <span class="items" v-if="data.postedAt">{{data.postedAt}}</span>
-                     <span>&bull;</span>
+                     <span class="bull-icon">&bull;</span>
                     <span class="items" v-if="data.contract">{{data.contract}}</span>
-                    <span>&bull;</span>
+                    <span class="bull-icon">&bull;</span>
                     <span class="items" v-if="data.location">{{data.location}}</span>
                  </div>
              </div>
          </div>
          <div class="row-2">
             <div v-for="(items, ix) in data.languages" :key="ix">
-                <div class="item" style="cursor:pointer; color: hsl(180, 29%, 50%);" @click="filteredResult(items)">{{items}}</div>
+                <div class="item language"  @click="filteredResult(items)">{{items}}</div>
             </div>
             <div v-for="(item, ix) in data.tools" :key="ix">
-                <div class="item" style="cursor:pointer; color: hsl(180, 29%, 50%);" @click="filteredResult(item)">{{item}}</div>
+                <div class="item language" @click="filteredResult(item)">{{item}}</div>
             </div>
-            <div v-if="data.level" style="cursor:pointer; color: hsl(180, 29%, 50%);" @click="filteredResult(data.level)">{{data.level}}</div>
+            <div v-if="data.level" class="language"  @click="filteredResult(data.level)">{{data.level}}</div>
             <!-- <div v-for="category in filtering" :key="category" class="item" @click="filteredResult(category)">{{category}}</div> -->
          </div>
         </div>
- </div>
+ </main>
 </div>
 </template>
 
